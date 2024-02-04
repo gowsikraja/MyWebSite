@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .then((data) {
       final file = RiveFile.import(data);
       var artBoard = file.mainArtboard;
-      _controller = _getController();
+      _controller = _getController(Get.isDarkMode);
       artBoard.addController(_controller!);
       setState(() {
         _artboard = artBoard;
@@ -39,14 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('Welcome !'),
           actions: [
             GestureDetector(
-              onTap: () {
-                Get.changeTheme(
-                    Get.isDarkMode ? ThemeData.light() : ThemeData.dark());
-                _artboard?.addController(_getController());
-              },
+              onTap: _changeTheme,
               child: SizedBox(
-                  width: 100,
-                  height: 50,
+                  width: 80,
+                  height: 40,
                   child: _artboard != null ? Rive(artboard: _artboard!) : null),
             )
           ],
@@ -69,7 +65,16 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  RiveAnimationController _getController() {
-    return SimpleAnimation(Get.isDarkMode ? 'ltr' : 'rtl');
+  void _changeTheme() {
+    Get.changeTheme(
+      Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+    );
+    Future.delayed(const Duration(milliseconds: 200), () {
+      _artboard?.addController(_getController(Get.isDarkMode));
+    });
+  }
+
+  RiveAnimationController _getController(bool isDark) {
+    return SimpleAnimation(isDark ? 'rtl' : 'ltr');
   }
 }
