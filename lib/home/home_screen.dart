@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:my_website/home/home_controller.dart';
+import 'package:my_website/resource.dart';
 import 'package:rive/rive.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,9 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    rootBundle
-        .load('assets/animation/light_to_dark_mode_switch.riv')
-        .then((data) {
+    rootBundle.load(AnimFilePath.themeModeButton).then((data) {
       final file = RiveFile.import(data);
       var artBoard = file.mainArtboard;
       _controller = _getController(Get.isDarkMode);
@@ -33,10 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final HomeController controller = Get.put(HomeController());
+    // final HomeController controller = Get.put(HomeController());
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Welcome !'),
+          title: const Text('Coming Soooon !'),
           actions: [
             GestureDetector(
               onTap: _changeTheme,
@@ -46,19 +45,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: _artboard != null ? Rive(artboard: _artboard!) : null),
             )
           ],
-          backgroundColor: Theme
-              .of(context)
-              .colorScheme
-              .inversePrimary),
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary),
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            controller.increment();
-          },
-          child: const Icon(Icons.add_rounded)),
-      body: Column(
+          onPressed: () {}, child: const Icon(Icons.add_rounded)),
+      body: Stack(
         children: [
-          Center(
-            child: Obx(() => Text('Count ${controller.count}')),
+          Opacity(
+            opacity: 0.3,
+            child: SizedBox(
+              width: size.width,
+              height: size.height,
+              child: RiveAnimation.asset(
+                Get.isDarkMode
+                    ? AnimFilePath.darkModeBackGround
+                    : AnimFilePath.lightModeBackGround,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ],
       ),
