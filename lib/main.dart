@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_website/home/home_screen.dart';
+import 'package:my_website/infrastucture/app_colors.dart';
 import 'package:my_website/landing_screen/landing_screen.dart';
 import 'package:my_website/landing_screen/landing_viewmodel.dart';
 
@@ -19,21 +21,25 @@ class MyApp extends StatelessWidget {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Gowsik Raja',
-        initialRoute: LandingScreen.screenId,
+        initialRoute: HomeScreen.screenId,
         theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
                 seedColor: Colors.white, brightness: Brightness.light),
             useMaterial3: true,
             fontFamily: 'Poppins'),
-
         darkTheme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
-                seedColor: Colors.black, brightness: Brightness.dark),
+                seedColor: Colors.black, brightness: Brightness.dark,
+            background: AppColors.background
+            ),
             useMaterial3: true,
             fontFamily: 'Poppins'),
         themeMode:
             controller.isDarkMode.isTrue ? ThemeMode.dark : ThemeMode.light,
-        routes: {LandingScreen.screenId: (_) => LandingScreen()},
+        routes: {
+          LandingScreen.screenId: (_) => LandingScreen(),
+          HomeScreen.screenId: (_) => const HomeScreen()
+        },
       );
     });
     /* return GetMaterialApp(

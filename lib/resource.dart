@@ -5,3 +5,8 @@ class AnimFilePath {
   static const lightModeBackGround =
       'assets/animation/light_mode_background.riv';
 }
+
+class ImagePath{
+  static const background =
+      'assets/images/background.png';
+}

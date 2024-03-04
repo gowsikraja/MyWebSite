@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
+import 'package:my_website/infrastucture/app_colors.dart';
 import 'package:my_website/resource.dart';
-import 'package:rive/rive.dart';
+import 'package:my_website/utils/app_extentions.dart';
 
 class HomeScreen extends StatefulWidget {
+  static const screenId = '/HomeScreen';
+
   const HomeScreen({super.key});
 
   @override
@@ -12,72 +13,85 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  RiveAnimationController? _controller;
-  Artboard? _artboard;
-
-  @override
-  void initState() {
-    super.initState();
-    rootBundle.load(AnimFilePath.themeModeButton).then((data) {
-      final file = RiveFile.import(data);
-      var artBoard = file.mainArtboard;
-      _controller = _getController(Get.isDarkMode);
-      artBoard.addController(_controller!);
-      setState(() {
-        _artboard = artBoard;
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    // final HomeController controller = Get.put(HomeController());
-    var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Coming Soooon !'),
-          actions: [
-            GestureDetector(
-              onTap: _changeTheme,
-              child: SizedBox(
-                  width: 80,
-                  height: 40,
-                  child: _artboard != null ? Rive(artboard: _artboard!) : null),
-            )
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            _background(),
+            Positioned(
+                top: context.screenSize.height/3,
+                left: context.screenSize.width/6,
+                // right: 32,
+                child: _buildBody())
           ],
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {}, child: const Icon(Icons.add_rounded)),
-      body: Stack(
-        children: [
-          Opacity(
-            opacity: 0.3,
-            child: SizedBox(
-              width: size.width,
-              height: size.height,
-              child: RiveAnimation.asset(
-                Get.isDarkMode
-                    ? AnimFilePath.darkModeBackGround
-                    : AnimFilePath.lightModeBackGround,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 
-  void _changeTheme() {
-    Get.changeTheme(
-      Get.isDarkMode ? ThemeData.light() : ThemeData.dark(),
+  Widget _background() {
+    return Column(
+      children: [
+        Container(
+          width: double.infinity,
+          height: kToolbarHeight,
+          margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
+          decoration: BoxDecoration(
+            color: AppColors.secoundary,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            title: const Padding(
+              padding: EdgeInsets.only(left: 16),
+              child: Text("Gowsik Raja"),
+            ),
+            centerTitle: false,
+            actions: [
+              TextButton(onPressed: () {}, child: const Text('About')),
+              const SizedBox(width: 40),
+              TextButton(onPressed: () {}, child: const Text('Works')),
+              const SizedBox(width: 40),
+              TextButton(onPressed: () {}, child: const Text('Contact')),
+              const SizedBox(width: 40),
+              // Obx(
+              //       () => Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: IconButton(
+              //       color: Theme.of(context).colorScheme.inverseSurface,
+              //       onPressed: _changeTheme,
+              //       icon: Icon(controller.isDarkMode.isTrue
+              //           ? CupertinoIcons.brightness_solid
+              //           : CupertinoIcons.brightness),
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+        ),
+        Flexible(
+          child: Image.asset(
+              width: context.screenSize.width,
+              ImagePath.background,
+              fit: BoxFit.contain),
+        )
+      ],
     );
-    Future.delayed(const Duration(milliseconds: 200), () {
-      _artboard?.addController(_getController(Get.isDarkMode));
-    });
   }
 
-  RiveAnimationController _getController(bool isDark) {
-    return SimpleAnimation(isDark ? 'rtl' : 'ltr');
+  Widget _buildBody() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Gowsik Raja',
+          style: Theme.of(context).textTheme.displayLarge?.copyWith(
+              fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
   }
 }
