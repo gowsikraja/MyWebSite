@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:my_website/infrastucture/app_colors.dart';
 
 class AppTheme {
-  // static final lite = ThemeData(
-  //     colorScheme: ColorScheme(
-  //       brightness: Brightness.light,
-  //       primary: const Color(0xff005ac1),
-  //       onPrimary: const Color(0xffffffff),
-  //       primaryContainer: const Color(0xffd8e2ff),
-  //       onPrimaryContainer: const Color(0xff001a41),
-  //       // onPrimaryContainer: const Color(0xff001a41),
-  //
-  //
-  //     ),
-  //     useMaterial3: true,
-  //     fontFamily: 'Poppins');
+  static final lite = ThemeData(
+    fontFamily: 'OpenSans',
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: Colors.white,
+      background: AppColors().lite.background,
+      secondary: AppColors().lite.secoundary,
+    ),
+  );
+
+  static final dark = ThemeData(
+    fontFamily: 'OpenSans',
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: Colors.black,
+      background: AppColors().dark.background,
+      secondary: AppColors().dark.secoundary,
+    ),
+  );
 }

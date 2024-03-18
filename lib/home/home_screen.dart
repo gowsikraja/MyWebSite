@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_website/infrastucture/app_colors.dart';
+import 'package:my_website/landing_screen/landing_viewmodel.dart';
 import 'package:my_website/resource.dart';
 import 'package:my_website/utils/app_extentions.dart';
 
@@ -13,6 +16,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final controller = Get.find<LandingScreenController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           height: kToolbarHeight,
           margin: const EdgeInsets.only(left: 20, top: 20, right: 20),
           decoration: BoxDecoration(
-            color: AppColors.secoundary,
+            color: Theme.of(context).colorScheme.secondary,
             borderRadius: BorderRadius.circular(10),
           ),
           child: AppBar(
@@ -57,18 +62,18 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(width: 40),
               TextButton(onPressed: () {}, child: const Text('Contact')),
               const SizedBox(width: 40),
-              // Obx(
-              //       () => Padding(
-              //     padding: const EdgeInsets.all(8.0),
-              //     child: IconButton(
-              //       color: Theme.of(context).colorScheme.inverseSurface,
-              //       onPressed: _changeTheme,
-              //       icon: Icon(controller.isDarkMode.isTrue
-              //           ? CupertinoIcons.brightness_solid
-              //           : CupertinoIcons.brightness),
-              //     ),
-              //   ),
-              // ),
+              Obx(
+                    () => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: IconButton(
+                    color: Theme.of(context).colorScheme.inverseSurface,
+                    onPressed: _changeTheme,
+                    icon: Icon(controller.isDarkMode.isTrue
+                        ? CupertinoIcons.brightness_solid
+                        : CupertinoIcons.brightness),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -93,5 +98,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
+  }
+
+  void _changeTheme() {
+    controller.toggleTheme();
   }
 }
