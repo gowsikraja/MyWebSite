@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const secoundary = Color(0x2BCFE9FE);
   final dark = _DarkMode();
   final lite = _ListeMode();
 }
@@ -11,8 +10,12 @@ class _DarkMode {
     return const Color(0xFF0D1117);
   }
 
+  Color get onBackground {
+    return const Color(0xFFFFFFFF);
+  }
+
   Color get secoundary {
-    return const Color(0x2BCFE9FE);
+    return const Color(0xff4a4e52);
   }
 }
 
@@ -21,7 +24,11 @@ class _ListeMode {
     return const Color(0xFFF5F5F5);
   }
 
+  Color get onBackground {
+    return Colors.black;
+  }
+
   Color get secoundary {
-    return const Color(0x2BCFE9FE);
+    return const Color(0xff4a4e52);
   }
 }

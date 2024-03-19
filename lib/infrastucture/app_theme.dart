@@ -10,6 +10,12 @@ class AppTheme {
       background: AppColors().lite.background,
       secondary: AppColors().lite.secoundary,
     ),
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 22),
+      bodyMedium: TextStyle(fontSize: 18),
+      bodySmall: TextStyle(fontSize: 16),
+    ).apply(displayColor: Colors.black),
   );
 
   static final dark = ThemeData(
@@ -20,5 +26,11 @@ class AppTheme {
       background: AppColors().dark.background,
       secondary: AppColors().dark.secoundary,
     ),
+    textTheme: const TextTheme(
+      displayLarge: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+      bodyLarge: TextStyle(fontSize: 22),
+      bodyMedium: TextStyle(fontSize: 18),
+      bodySmall: TextStyle(fontSize: 16),
+    ).apply(displayColor: Colors.white),
   );
 }

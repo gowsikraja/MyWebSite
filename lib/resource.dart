@@ -7,6 +7,8 @@ class AnimFilePath {
 }
 
 class ImagePath{
-  static const background =
-      'assets/images/background.png';
+  static const background = 'assets/images/background.png';
+  static const aboutLineEnd = 'assets/images/about_line_end.png';
+  static const aboutLineStart = 'assets/images/about_line_start.png';
+  static const aboutIcon = 'assets/images/about_icon.png';
 }
