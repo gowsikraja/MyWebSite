@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
 
-const pg1 = 'Effective Date: April-2024\n\nThank you for choosing Sri Mugundaa.'
-    ' Your privacy is important to us, and we are committed to protecting your'
-    ' personal information. This Privacy Policy explains how we collect, use, '
-    'and safeguard your data when you use our mobile application (the "App").';
-
-const pg2 = '';
-
 class PrivacyPolicy extends StatelessWidget {
   static const screenId = '/PrivacyPolicy';
 
@@ -17,7 +10,7 @@ class PrivacyPolicy extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 100),
+        padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 150),
         child: _content(),
       ),
     );
@@ -29,12 +22,18 @@ class PrivacyPolicy extends StatelessWidget {
           children: [
             Text(
               'Privacy Policy',
-              style:
-                  TextStyle(fontWeight: FontWeight.w900, color: Colors.black),
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 32,
+                  color: Colors.black),
             ),
             SizedBox(height: 20),
             Text(
-              pg1,
+              'Effective Date: April-2024\n\nThank you for choosing Sri '
+              'Mugundaa. Your privacy is important to us, and we are '
+              'committed to protecting your personal information. This '
+              'Privacy Policy explains how we collect, use, and safeguard '
+              'your data when you use our mobile application (the "App").',
               style: TextStyle(color: Colors.black),
               textAlign: TextAlign.justify,
             ),
@@ -185,7 +184,67 @@ class PrivacyPolicy extends StatelessWidget {
               style: TextStyle(color: Colors.black),
               textAlign: TextAlign.justify,
             ),
+
+            ///PG5
+            SizedBox(height: 50),
+            Text(
+              '5. Children\'s Privacy',
+              style:
+                  TextStyle(fontWeight: FontWeight.w900, color: Colors.black),
+            ),
             SizedBox(height: 20),
+            Text(
+              'Sri Mugundaa is not intended for use by children under the age '
+              'of 13. We do not knowingly collect personal information from '
+              'children under 13. If you believe that we may have collected '
+              'information from a child under 13, please contact us'
+              ' immediately at gowsik.andro@gmail.com, and we will take'
+              ' appropriate steps to delete such information.',
+              style: TextStyle(color: Colors.black),
+              textAlign: TextAlign.justify,
+            ),
+
+            ///PG5
+            SizedBox(height: 50),
+            Text(
+              '6. Changes to This Privacy Policy',
+              style:
+                  TextStyle(fontWeight: FontWeight.w900, color: Colors.black),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'We may update this Privacy Policy from time to time to reflect'
+              ' changes in our practices or legal requirements. We will'
+              ' notify you of any material changes by posting the updated'
+              ' Privacy Policy on this page. Please review this Privacy'
+              ' Policy periodically for any updates.',
+              style: TextStyle(color: Colors.black),
+              textAlign: TextAlign.justify,
+            ),
+
+            ///PG6
+            SizedBox(height: 50),
+            Text(
+              '7. Contact Us',
+              style:
+                  TextStyle(fontWeight: FontWeight.w900, color: Colors.black),
+            ),
+            SizedBox(height: 20),
+            Text(
+              'If you have any questions, concerns, or feedback about this '
+              'Privacy Policy or our privacy practices, please contact us '
+              'at gowsik.andro@gmail.com.',
+              style: TextStyle(color: Colors.black),
+              textAlign: TextAlign.justify,
+            ),
+
+            SizedBox(height: 50),
+            Text(
+              'By using the App, you agree to the collection and use of your '
+              'information in accordance with this Privacy Policy.',
+              style: TextStyle(color: Colors.black),
+            ),
+            SizedBox(height: 50),
           ],
         ),
       );
