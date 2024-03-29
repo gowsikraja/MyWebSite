@@ -4,6 +4,7 @@ import 'package:my_website/home/home_screen.dart';
 import 'package:my_website/infrastucture/app_theme.dart';
 import 'package:my_website/landing_screen/landing_screen.dart';
 import 'package:my_website/landing_screen/landing_viewmodel.dart';
+import 'package:my_website/privacy_policy/privacy_policy.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
             controller.isDarkMode.isTrue ? ThemeMode.dark : ThemeMode.light,
         routes: {
           LandingScreen.screenId: (_) => LandingScreen(),
-          HomeScreen.screenId: (_) => const HomeScreen()
+          HomeScreen.screenId: (_) => const HomeScreen(),
+          PrivacyPolicy.screenId: (_) => const PrivacyPolicy()
         },
         initialRoute: HomeScreen.screenId,
       );

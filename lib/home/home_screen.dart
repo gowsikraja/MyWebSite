@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_website/landing_screen/landing_viewmodel.dart';
+import 'package:my_website/privacy_policy/privacy_policy.dart';
 import 'package:my_website/resource.dart';
 import 'package:my_website/widgets/about_me.dart';
 import 'package:my_website/widgets/components.dart';
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         centerTitle: false,
         actions: [
-          TextButton(onPressed: () {}, child: const Text('About')),
+          TextButton(onPressed: _onTapAbout, child: const Text('About')),
           const SizedBox(width: 40),
           TextButton(onPressed: () {}, child: const Text('Works')),
           const SizedBox(width: 40),
@@ -122,5 +123,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ],
     );
+  }
+
+  void _onTapAbout() {
+    Navigator.pushNamed(context, PrivacyPolicy.screenId);
   }
 }
