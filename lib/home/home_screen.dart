@@ -78,7 +78,14 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Padding(
         padding: const EdgeInsets.all(22),
         child: Column(
-          children: [_introWidget(), const AboutMeWidget()],
+          children: [
+            _introWidget(),
+            const AboutMeWidget(),
+            Container(
+              height: context.height,
+              width: context.width,
+            )
+          ],
         ),
       ),
     );

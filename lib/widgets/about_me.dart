@@ -9,14 +9,20 @@ class AboutMeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: context.height,
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      alignment: Alignment.topLeft,
-      child: Row(
+      child: Column(
+        // mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _aboutMeTrackLine(context),
-          _aboutMeTitle(context),
+          Row(
+            children: [
+              _aboutMeTrackLine(context),
+              _aboutMeTitle(context),
+            ],
+          ),
+          _aboutMeBody(context),
+          Components.trackingLine(ImagePath.projectLineStart)
         ],
       ),
     );
@@ -71,7 +77,7 @@ class AboutMeWidget extends StatelessWidget {
               ),
             ),
           ),
-          _aboutMeBody(context)
+          // _aboutMeBody(context)
         ],
       ),
     );
@@ -80,68 +86,65 @@ class AboutMeWidget extends StatelessWidget {
   Widget _aboutMeBody(BuildContext context) {
     return Container(
       width: context.width / 1.2,
-      margin: const EdgeInsets.only(top: 100),
+      // height: context.height,
+      margin: const EdgeInsets.only(top: 100,left: 50),
       child: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(50),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.aboutMeBodyBackground,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: Theme.of(context).colorScheme.aboutMeBodyStroke,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(50),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.aboutMeBodyBackground,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Theme.of(context).colorScheme.aboutMeBodyStroke,
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                      "Praesent imperdiet ante tortor, sit amet mollis erat "
+                      "placeratsuscipit. Nulla lobortis et libero sit amet congue."
+                      "Donec "
+                      "quis odio at augue imperdiet posuere. Sed ullamcorper "
+                      "hendrerit auctor. In laoreet arcu maximus fringilla ornare."
+                      " Sed quam leo, maximus a sodales scelerisque, "
+                      "lacinia vitae tortor. Aenean tincidunt porttitor "
+                      "pulvinar. Aliquam fermentum consequat orci,sed euismod "
+                      "diam posuere ut. Vestibulum ante massa, rutrum eu "
+                      "enim consequat, tincidunt tincidunt eros.",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                      textAlign: TextAlign.start,
+                    ),
+                    const SizedBox(height: 40),
+                  ],
+                ),
               ),
-            ),
-            child: Column(
-              children: [
-                Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  "Praesent imperdiet ante tortor, sit amet mollis erat "
-                  "placeratsuscipit. Nulla lobortis et libero sit amet congue."
-                  "Donec "
-                  "quis odio at augue imperdiet posuere. Sed ullamcorper "
-                  "hendrerit auctor. In laoreet arcu maximus fringilla ornare."
-                  " Sed quam leo, maximus a sodales scelerisque, "
-                  "lacinia vitae tortor. Aenean tincidunt porttitor "
-                  "pulvinar. Aliquam fermentum consequat orci,sed euismod "
-                  "diam posuere ut. Vestibulum ante massa, rutrum eu "
-                  "enim consequat, tincidunt tincidunt eros.",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.start,
-                ),
-                const SizedBox(height: 20),
-                Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  "Praesent imperdiet ante tortor, sit amet mollis erat "
-                  "placeratsuscipit. Nulla lobortis et libero sit amet congue."
-                  "Donec "
-                  "quis odio at augue imperdiet posuere. Sed ullamcorper "
-                  "hendrerit auctor. In laoreet arcu maximus fringilla ornare."
-                  " Sed quam leo, maximus a sodales scelerisque, "
-                  "lacinia vitae tortor. Aenean tincidunt porttitor "
-                  "pulvinar. Aliquam fermentum consequat orci,sed euismod "
-                  "diam posuere ut. Vestibulum ante massa, rutrum eu "
-                  "enim consequat, tincidunt tincidunt eros.",
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.start,
-                ),
-              ],
-            ),
+              const SizedBox(height: 20),
+              Image.asset(
+                ImagePath.aboutDesign,
+                width: context.width / 5,
+              )
+            ],
           ),
           Positioned(
-            top: 100,
-            left: 100,
+            top: context.height / 4,
+            left: context.width / 3,
             child: Container(
-              width: context.width/2,
+              width: context.width / 2.3,
               padding: const EdgeInsets.all(50),
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.aboutMeBodyBackground,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: Theme.of(context).colorScheme.aboutMeBodyStroke,
-                ),
-              ),
+                  color: Theme.of(context).colorScheme.aboutMeBodyBackground,
+                  borderRadius: BorderRadius.circular(10),
+                  border: const Border(
+                    top: BorderSide(color: Color(0xff6E7681)),
+                    left: BorderSide(color: Color(0xff6E7681)),
+                  )
+                  ),
               child: Text(
                 "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 "Praesent imperdiet ante tortor, sit amet mollis erat "
